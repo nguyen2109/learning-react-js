@@ -142,3 +142,62 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+const books = getBooks();
+
+//18. Destructuring Objects and Arrays
+const book = getBook(1);
+const { title, author, genres, pages, publicationDate } = book;
+title;
+author;
+genres;
+
+const [frist, second] = genres;
+frist;
+second;
+
+//19. Rest/Spread Operator
+
+const newEl = [...genres, "one", "true"];
+newEl;
+
+const updateBook = {
+  ...book,
+  somethings: "updated",
+  pages: 1999,
+};
+updateBook;
+const pageRange =
+  pages > 1000 ? "Lớn hơn 1000 trang sách" : "Ít hơn 1000 trang sách";
+
+pageRange;
+
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
+//29. Working With Immutable Arrays
+
+//1-Add
+
+const newBook = {
+  id: 999,
+  title: "Sách 999",
+};
+
+const addNewBook = [...books, newBook];
+addNewBook;
+
+//2 Delete
+const deleteBook = books.filter((books) => books.id !== 3);
+deleteBook;
+
+//3-Update
+
+const updatedBook = books.map((book) =>
+  book.id === 1
+    ? {
+        title: "Book có ID là 1",
+        pages: 1999,
+      }
+    : book
+);
+updatedBook;
